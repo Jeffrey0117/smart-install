@@ -1,0 +1,10 @@
+{
+  "repo": 1,
+  "name": "smart-install",
+  "what": "Resilient npm install that handles postinstall failures for native binary packages",
+  "kind": "tool",
+  "work": {
+    "guide": "CLAUDE.md",
+    "test": "npm test"
+  }
+}

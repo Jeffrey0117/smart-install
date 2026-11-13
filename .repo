@@ -6,5 +6,25 @@
   "work": {
     "guide": "CLAUDE.md",
     "test": "npm test"
-  }
+  },
+  "offers": [
+    {
+      "id": "install",
+      "what": "在指定目錄（預設目前目錄）安裝依賴，自動偵測 npm / pnpm / yarn；postinstall 失敗時改用 --ignore-scripts 重裝，再逐一補跑 electron、sharp、esbuild、better-sqlite3 等原生套件的安裝腳本並驗證。npm install 卡在原生二進位的 postinstall 時用；只救得回登錄表裡有的套件，失敗時 exit code 為 1。",
+      "how": "cli",
+      "cli": "smart-install [dir]"
+    },
+    {
+      "id": "verify",
+      "what": "檢查指定目錄裡偵測到的原生套件二進位檔是否都在，逐一印出 ok / MISSING，有缺就 exit code 1。裝完想確認，或懷疑二進位檔沒裝好時用。",
+      "how": "cli",
+      "cli": "smart-install verify [dir]"
+    },
+    {
+      "id": "lib",
+      "what": "同一套邏輯的函式版（純 ESM）：smartInstall(dir, { packageManager, silent }) 回傳 { ok, recovered, failed, report }，verifyInstall(dir) 回傳 [{ name, ok }]。不丟例外，結果都在回傳值裡；要在自己的安裝或建置腳本裡呼叫時用。",
+      "how": "import",
+      "import": "import { smartInstall, verifyInstall } from \"smart-install\""
+    }
+  ]
 }
